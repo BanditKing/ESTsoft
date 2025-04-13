@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>타임 리프</title>
+</head>
+<body>
+<h1>타임리프 학습</h1>
+<p th:text="${#temporals.format(today, 'yyyy-MM-dd')}"></p>
+
+<div th:object="${person}">
+    <p th:text="|이름 : *{name}|"></p>
+    <p th:text="|나이 : *{age}|"></p>
+    <p>취미</p>
+    <ul th:each="hobby : *{hobbies}">
+        <li>
+            <span th:text="${hobby}"></span>
+            <span th:if="${hobby == '여행'}"><br>(대표취미)</span>
+        </li>
+    </ul>
+</div>
+
+<a th:href="@{/api/articles/{id}(id=${person.id})}">글 보기</a>
+</body>
+</html>
