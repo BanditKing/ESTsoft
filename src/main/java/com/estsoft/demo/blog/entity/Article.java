@@ -16,9 +16,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class Article {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
+    @Column(name = "article_id", updatable = false) // ✅ DB 컬럼명과 매핑
     private Long id;
 
     @Column(nullable = false)
@@ -47,28 +48,4 @@ public class Article {
     public ArticleResponse toDto() {
         return new ArticleResponse(id, title, content);
     }
-//    public Article(Builder builder) {
-//        this.title = builder.title;
-//        this.content = builder.content;
-//    }
-//
-//    // 빌더 패턴
-//    private static class Builder {
-//        private String title;
-//        private String content;
-//
-//        Builder title(String title) {
-//            this.title = title;
-//            return this;
-//        }
-//
-//        Builder content(String content) {
-//            this.content = content;
-//            return this;
-//        }
-//
-//        Article build() {
-//            return new Article(this);
-//        }
-//    }
 }

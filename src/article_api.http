@@ -27,6 +27,5 @@ Content-Type: application/json
   "title": "제목11",
   "content": "내용11"
 }
-
 ###호출
-POST http://localhost:8080/api/articles/sync
+GET http://localhost:8080/test?query=hello
