@@ -1,10 +1,10 @@
 package com.estsoft.demo.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
+@AllArgsConstructor
 public class PostContent {
     private int userId;
     private int id;
@@ -13,6 +13,6 @@ public class PostContent {
 
     @Override
     public String toString() {
-        return id + ", " + title + "\n" ;
+        return id + ", " + title + "\n";
     }
 }

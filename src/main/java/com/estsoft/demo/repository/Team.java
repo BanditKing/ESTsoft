@@ -1,26 +1,28 @@
 package com.estsoft.demo.repository;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Getter
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 public class Team {
-
     @Id
+    @Column(name = "team_id", updatable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "team_id")
     private Long id;
 
+    @Column
     private String name;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
+
+    public Team(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

@@ -5,8 +5,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-@Slf4j
 
+@Slf4j
 public class SecondFilter implements Filter {
 
     @Override
@@ -19,14 +19,15 @@ public class SecondFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String queryString = request.getQueryString();
 
-        log.info("queryStirng - queryStirng: {}", queryString);
+        log.info("SecondFilter - queryString: {}", queryString);
+
         filterChain.doFilter(servletRequest, servletResponse);
 
-        log.info("secondFilter response");
+        log.info("SecondFilter response");
     }
 
     @Override
     public void destroy() {
-        Filter.super.destroy();
+        log.info("SecondFilter destroy()");
     }
 }

@@ -1,6 +1,6 @@
 package com.estsoft.demo.blog.dto;
 
-import com.estsoft.demo.blog.entity.Article;
+import com.estsoft.demo.blog.domain.Article;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
-
 public class ArticleViewResponse {
     private Long id;
     private String title;
@@ -20,7 +19,5 @@ public class ArticleViewResponse {
         this.title = article.getTitle();
         this.content = article.getContent();
         this.createdAt = article.getCreatedAt();
-
     }
-
 }

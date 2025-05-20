@@ -20,6 +20,6 @@ public class PageController {
         model.addAttribute("person", person);
         model.addAttribute("today", LocalDateTime.now());
 
-        return "examplePage";// html 페이지
+        return "examplePage";   // html 페이지
     }
 }

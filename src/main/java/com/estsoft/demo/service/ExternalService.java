@@ -16,13 +16,12 @@ public class ExternalService {
 
     public void call() {
         String url = "https://jsonplaceholder.typicode.com/posts";
-        //RestTemplate
+
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<PostContent>> response = restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<>(){});
 
-      log.info("{}", response.getStatusCode());
-      List<PostContent> postContent = response.getBody();
-      log.info("postContent: {}", postContent);
-
+        log.info("code: {}", response.getStatusCode());   // code: 200 OK
+        List<PostContent> postContent = response.getBody();
+        log.info("postContent: {}", postContent);
     }
 }

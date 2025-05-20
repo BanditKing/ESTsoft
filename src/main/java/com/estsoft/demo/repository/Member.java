@@ -1,16 +1,14 @@
 package com.estsoft.demo.repository;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.security.Timestamp;
-
-@NoArgsConstructor
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +18,12 @@ public class Member {
     @Column
     private String name;
 
-    // team_id
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "team_id")
-    @JsonBackReference
     private Team team;
-}
 
+    public Member(String name, Team team) {
+        this.name = name;
+        this.team = team;
+    }
+}

@@ -1,16 +1,22 @@
 package com.estsoft.demo.blog.controller;
 
-import com.estsoft.demo.dto.ErrorResponse;
+import com.estsoft.demo.blog.exception.NotExistsIdException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-@RestControllerAdvice
+/**
+ * 전역 예외 처리
+ */
+@ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException e) {
-        ErrorResponse errorResponse = new ErrorResponse("400", e.getMessage());
-        return ResponseEntity.badRequest().body(errorResponse);
+    @ExceptionHandler(NotExistsIdException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorHandle> handlerNotExistsIdException(NotExistsIdException e) {
+        return ResponseEntity.badRequest()
+                .body(new ErrorHandle("400", e.getMessage()));
     }
 }

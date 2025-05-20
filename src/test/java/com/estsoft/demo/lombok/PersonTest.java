@@ -5,11 +5,12 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 class PersonTest {
 
     @Test
     public void testLombok() {
-        Person person = new Person ();
+        Person person = new Person();
         person.setId(1L);
         person.setName("name1");
         person.setAge(20);
@@ -20,4 +21,5 @@ class PersonTest {
         System.out.println(person.getAge());
         System.out.println(person.getHobbies());
     }
+
 }

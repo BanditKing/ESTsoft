@@ -21,7 +21,6 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
-
 }
 
 dependencies {
@@ -42,9 +41,10 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
-
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
 }
 
-tasks.named('test') {
+
+test {
 	useJUnitPlatform()
 }

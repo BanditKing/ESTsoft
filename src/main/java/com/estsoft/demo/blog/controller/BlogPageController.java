@@ -1,6 +1,6 @@
 package com.estsoft.demo.blog.controller;
 
-import com.estsoft.demo.blog.entity.Article;
+import com.estsoft.demo.blog.domain.Article;
 import com.estsoft.demo.blog.dto.ArticleViewResponse;
 import com.estsoft.demo.blog.service.BlogService;
 import org.springframework.stereotype.Controller;
@@ -33,7 +33,7 @@ public class BlogPageController {
     // /articles/{id} -> article.html
     @GetMapping("/articles/{id}")
     public String getArticle(@PathVariable("id") Long id, Model model) {
-        Article article = blogService.findArticleById(id);
+        Article article = blogService.findArticle(id);
 
         model.addAttribute("article", new ArticleViewResponse(article));
 
@@ -46,7 +46,7 @@ public class BlogPageController {
         if (id == null) {
             model.addAttribute("article", new ArticleViewResponse());
         } else {
-            Article article = blogService.findArticleById(id);
+            Article article = blogService.findArticle(id);
             model.addAttribute("article", new ArticleViewResponse(article));
         }
         return "newArticle";

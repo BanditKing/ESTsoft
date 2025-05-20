@@ -11,19 +11,16 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class TimeLoggingAspect {
+    /* Pointcut */
     @Pointcut("execution(* com.estsoft.demo.blog.service..*(..))")
-    public void pointcut() {
-    }
+    public void pointcut() {}
 
     /* Advice */
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint joinPoint) {
         long startTimeMs = System.currentTimeMillis();
-        Object result;
-
         try {
-            result = joinPoint.proceed();
-            return result;
+            return joinPoint.proceed();
         } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         } finally {

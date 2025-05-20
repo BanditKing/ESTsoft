@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member,Long> {
+public interface MemberRepository extends JpaRepository<Member, Long> {
 
-   List<Member> findByNameContaining(String name); //select ---from member where name = ?
+    List<Member> findByNameContaining(String name);   // selct --- from member where name LIKE '%?%'
 }

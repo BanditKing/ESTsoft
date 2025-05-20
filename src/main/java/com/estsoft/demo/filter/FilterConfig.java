@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
  * - 필터 체인 순서 지정
  * - url 패턴
  */
-
 @Configuration
 public class FilterConfig {
 
@@ -21,20 +20,15 @@ public class FilterConfig {
         filter.setFilter(new FirstFilter());
         filter.setOrder(1);
         filter.addUrlPatterns("/test");
-
         return filter;
-
     }
 
     @Bean
     public FilterRegistrationBean<Filter> secondFilter() {
-
         FilterRegistrationBean<Filter> filter = new FilterRegistrationBean<>();
         filter.setFilter(new SecondFilter());
         filter.setOrder(2);
         filter.addUrlPatterns("/test");
         return filter;
-
-
     }
 }

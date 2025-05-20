@@ -1,10 +1,9 @@
 package com.estsoft.demo.blog.service;
 
+import com.estsoft.demo.blog.domain.User;
 import com.estsoft.demo.blog.dto.AddUserRequest;
-import com.estsoft.demo.blog.entity.User;
 import com.estsoft.demo.blog.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +16,7 @@ public class UserService {
         this.userRepository = userRepository;
         this.encoder = encoder;
     }
+
     public void signup(AddUserRequest request) {
         userRepository.save(
                 new User(request.getEmail(), encoder.encode(request.getPassword()))

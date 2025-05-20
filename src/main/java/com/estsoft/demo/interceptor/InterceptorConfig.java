@@ -10,13 +10,11 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new FirstInterceptor())
-                .addPathPatterns("/test**")
+                .addPathPatterns("/test")
                 .order(1);
 
-
         registry.addInterceptor(new SecondInterceptor())
-                .addPathPatterns("/test**")
+                .addPathPatterns("/test")
                 .order(2);
-
     }
 }
